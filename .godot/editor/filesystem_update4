@@ -1,0 +1,7 @@
+res://scenes/world.tscn
+res://scripts/Player.gd
+res://scripts/enemy.gd
+res://scripts/global.gd
+res://scripts/Spike.gd
+res://scripts/Pot.gd
+res://scripts/Enemy.gd
