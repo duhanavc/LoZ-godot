@@ -1,10 +1,8 @@
-[gd_scene load_steps=53 format=3 uid="uid://d8rd6adea7kg"]
+[gd_scene load_steps=47 format=3 uid="uid://d8rd6adea7kg"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_0wwgy"]
 [ext_resource type="Texture2D" uid="uid://ccjph8xma7g0r" path="res://sprites/dungeon.png" id="1_55ohx"]
-[ext_resource type="Script" path="res://scripts/world.gd" id="1_jr2g1"]
 [ext_resource type="Texture2D" uid="uid://b0vytsvflvthw" path="res://sprites/zeldaCharSheet.png" id="1_mg52j"]
-[ext_resource type="Script" path="res://scripts/Camera2D.gd" id="3_cfm8w"]
 [ext_resource type="PackedScene" uid="uid://4amd2powcqo" path="res://scenes/swordArea.tscn" id="3_o3v2t"]
 [ext_resource type="Texture2D" uid="uid://bwqlmlua1gnta" path="res://sprites/hpTexture2.png" id="4_48ppt"]
 [ext_resource type="Texture2D" uid="uid://by0ihla7trx0o" path="res://sprites/enemy.png" id="4_mnkgd"]
@@ -17,141 +15,6 @@
 [ext_resource type="Script" path="res://scripts/SwordPickup.gd" id="10_mb0ql"]
 [ext_resource type="AudioStream" uid="uid://dmle0xk58pyd8" path="res://fonts/minecraft-mob-villager-hit-2-gaming-sound-effect-minecraft-hd-sound-effects.mp3" id="10_xipoc"]
 [ext_resource type="Texture2D" uid="uid://bh8fy0c26823x" path="res://sprites/sword.png" id="11_5wf6x"]
-[ext_resource type="Texture2D" uid="uid://bc0kycdhqt36r" path="res://sprites/NPC.png" id="17_1kt6g"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ifoxi"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kepnw"]
-
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_6d6nm"]
-vertices = PackedVector2Array(214, 174, 42, 174, 42, 82, 214, 82)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(32, 72, 32, 184, 224, 184, 224, 72)])
-source_geometry_group_name = &"navigation_polygon_source_group"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uvm25"]
-atlas = ExtResource("4_mnkgd")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kyd7y"]
-atlas = ExtResource("4_mnkgd")
-region = Rect2(128, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nd3xu"]
-atlas = ExtResource("4_mnkgd")
-region = Rect2(192, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7os0o"]
-atlas = ExtResource("4_mnkgd")
-region = Rect2(384, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_87das"]
-atlas = ExtResource("4_mnkgd")
-region = Rect2(448, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_20g4d"]
-atlas = ExtResource("4_mnkgd")
-region = Rect2(256, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lih0a"]
-atlas = ExtResource("4_mnkgd")
-region = Rect2(320, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bcskt"]
-atlas = ExtResource("4_mnkgd")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8j0vo"]
-atlas = ExtResource("4_mnkgd")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_i678v"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uvm25")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kyd7y")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nd3xu")
-}],
-"loop": true,
-"name": &"walkDown",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7os0o")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_87das")
-}],
-"loop": true,
-"name": &"walkLeft",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_20g4d")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lih0a")
-}],
-"loop": true,
-"name": &"walkRight",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bcskt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8j0vo")
-}],
-"loop": true,
-"name": &"walkUp",
-"speed": 5.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kl3xm"]
-size = Vector2(10, 10)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lflud"]
-size = Vector2(16, 16)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_va0v5"]
-radius = 32.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_34int"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6e0lc"]
-atlas = ExtResource("17_1kt6g")
-region = Rect2(0, 0, 18, 18)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_v0b7u"]
-atlas = ExtResource("17_1kt6g")
-region = Rect2(18, 0, 18, 18)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_i2fvg"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6e0lc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_v0b7u")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yiwyn"]
 size = Vector2(16, 16)
@@ -388,22 +251,133 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aa6ah"]
 size = Vector2(22.2857, 20)
 
-[node name="World" type="Node2D"]
-script = ExtResource("1_jr2g1")
-pickUpSword = ExtResource("10_ejco8")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ifoxi"]
 
-[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
-position = Vector2(384, 104)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kepnw"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_6d6nm"]
+vertices = PackedVector2Array(214, 174, 42, 174, 42, 82, 214, 82)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(32, 72, 32, 184, 224, 184, 224, 72)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvm25"]
+atlas = ExtResource("4_mnkgd")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kyd7y"]
+atlas = ExtResource("4_mnkgd")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nd3xu"]
+atlas = ExtResource("4_mnkgd")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7os0o"]
+atlas = ExtResource("4_mnkgd")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_87das"]
+atlas = ExtResource("4_mnkgd")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_20g4d"]
+atlas = ExtResource("4_mnkgd")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lih0a"]
+atlas = ExtResource("4_mnkgd")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bcskt"]
+atlas = ExtResource("4_mnkgd")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8j0vo"]
+atlas = ExtResource("4_mnkgd")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i678v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uvm25")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kyd7y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nd3xu")
+}],
+"loop": true,
+"name": &"walkDown",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7os0o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_87das")
+}],
+"loop": true,
+"name": &"walkLeft",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_20g4d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lih0a")
+}],
+"loop": true,
+"name": &"walkRight",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bcskt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8j0vo")
+}],
+"loop": true,
+"name": &"walkUp",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kl3xm"]
+size = Vector2(10, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lflud"]
+size = Vector2(16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_va0v5"]
+radius = 32.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_34int"]
+
+[node name="World" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(120, 88)
 offset = Vector2(7.96, 18.15)
-anchor_mode = 0
 zoom = Vector2(1, 1.02)
-position_smoothing_enabled = true
-script = ExtResource("3_cfm8w")
-player = NodePath("../Player")
 
 [node name="Dungeon" type="Sprite2D" parent="."]
-position = Vector2(392, 144)
+position = Vector2(128, 128)
 texture = ExtResource("1_55ohx")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Dungeon"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Dungeon/StaticBody2D"]
+polygon = PackedVector2Array(-96, -56, -128, -88, -128, 88, -96, 56, -96, 8, -112, 16, -112, -16, -96, -8)
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Dungeon"]
 
@@ -420,25 +394,46 @@ polygon = PackedVector2Array(96, -56, 96, -8, 112, -16, 112, 16, 96, 8, 96, 56, 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Dungeon/StaticBody2D4"]
 polygon = PackedVector2Array(-96, -56, 96, -56, 128, -88, -128, -88)
 
-[node name="Dungeon2" type="Sprite2D" parent="."]
-position = Vector2(136, 144)
-texture = ExtResource("1_55ohx")
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(128, 128)
+script = ExtResource("1_0wwgy")
+speed = 50
+sword = ExtResource("3_o3v2t")
+pickUpSword = ExtResource("10_ejco8")
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="Dungeon2"]
+[node name="İskelet" type="CollisionShape2D" parent="Player"]
+position = Vector2(-8, 0)
+shape = SubResource("RectangleShape2D_yiwyn")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Dungeon2/StaticBody2D2"]
-polygon = PackedVector2Array(128, 88, 96, 56, 8, 56, 16, 72, -16, 72, -8, 56, -96, 56, -128, 88)
+[node name="Görünüm" type="Sprite2D" parent="Player"]
+position = Vector2(-8, 0)
+texture = ExtResource("1_mg52j")
+hframes = 21
+frame = 1
 
-[node name="StaticBody2D3" type="StaticBody2D" parent="Dungeon2"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
+libraries = {
+"": SubResource("AnimationLibrary_n1jd3")
+}
+autoplay = "idle"
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Dungeon2/StaticBody2D3"]
-position = Vector2(-224, 8)
-polygon = PackedVector2Array(96, -96, 96, 80, 128, 48, 128, -64)
+[node name="HitBox" type="Area2D" parent="Player"]
 
-[node name="StaticBody2D4" type="StaticBody2D" parent="Dungeon2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/HitBox"]
+position = Vector2(-8.48, 0)
+scale = Vector2(1.12, 1.025)
+shape = SubResource("RectangleShape2D_aa6ah")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Dungeon2/StaticBody2D4"]
-polygon = PackedVector2Array(-96, -56, 96, -56, 128, -88, -128, -88)
+[node name="dealAttackTimer" type="Timer" parent="Player"]
+wait_time = 0.4
+
+[node name="attackCooldown" type="Timer" parent="Player"]
+wait_time = 0.4
+
+[node name="HandPos" type="Marker2D" parent="Player"]
+position = Vector2(-8, 0)
+
+[node name="swordReloadTimer" type="Timer" parent="Player"]
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
@@ -446,7 +441,6 @@ polygon = PackedVector2Array(-96, -56, 96, -56, 128, -88, -128, -88)
 offset_right = 256.0
 offset_bottom = 40.0
 color = Color(0, 0, 0, 1)
-metadata/_edit_use_anchors_ = true
 
 [node name="hpBar" type="TextureProgressBar" parent="HUD"]
 offset_left = 200.0
@@ -458,7 +452,6 @@ step = 0.5
 value = 3.0
 texture_under = ExtResource("4_48ppt")
 texture_progress = ExtResource("5_n6niq")
-metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="HUD"]
 modulate = Color(1, 0, 0, 1)
@@ -468,10 +461,9 @@ offset_right = 249.47
 offset_bottom = 28.715
 scale = Vector2(0.78, 0.485)
 text = "-LIFE-"
-metadata/_edit_use_anchors_ = true
 
 [node name="Spike" type="Area2D" parent="."]
-position = Vector2(336, 144)
+position = Vector2(72, 128)
 script = ExtResource("6_2y8wj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spike"]
@@ -481,7 +473,7 @@ shape = SubResource("RectangleShape2D_ifoxi")
 texture = ExtResource("6_lf7ra")
 
 [node name="Pot" type="Area2D" parent="."]
-position = Vector2(448, 176)
+position = Vector2(184, 160)
 script = ExtResource("8_guq4k")
 
 [node name="Sprite2D" type="Sprite2D" parent="Pot"]
@@ -492,11 +484,10 @@ hframes = 3
 shape = SubResource("RectangleShape2D_kepnw")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-position = Vector2(264, 16)
 navigation_polygon = SubResource("NavigationPolygon_6d6nm")
 
 [node name="Enemy" type="CharacterBody2D" parent="." node_paths=PackedStringArray("nav", "rcArray")]
-position = Vector2(448, 128)
+position = Vector2(168, 120)
 script = ExtResource("9_5ind8")
 nav = NodePath("NavigationAgent2D")
 maxX = 320.0
@@ -504,6 +495,7 @@ minX = -320.0
 maxY = 267.0
 minY = -267.0
 rcArray = [NodePath("RCDown"), NodePath("RCLeft"), NodePath("RCRight"), NodePath("RCUp")]
+metadata/_edit_group_ = true
 
 [node name="aniSprite" type="AnimatedSprite2D" parent="Enemy"]
 sprite_frames = SubResource("SpriteFrames_i678v")
@@ -546,8 +538,9 @@ target_position = Vector2(0, -24)
 stream = ExtResource("10_xipoc")
 
 [node name="SwordPickup" type="Area2D" parent="."]
-position = Vector2(336, 120)
+position = Vector2(72, 104)
 script = ExtResource("10_mb0ql")
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SwordPickup"]
 shape = SubResource("RectangleShape2D_34int")
@@ -555,67 +548,13 @@ shape = SubResource("RectangleShape2D_34int")
 [node name="Sprite2D" type="Sprite2D" parent="SwordPickup"]
 texture = ExtResource("11_5wf6x")
 
-[node name="swordReloadTimer" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
-
-[node name="Merchant" type="AnimatedSprite2D" parent="."]
-modulate = Color(0.894922, 0.894922, 0.894922, 1)
-position = Vector2(128, 112)
-sprite_frames = SubResource("SpriteFrames_i2fvg")
-animation = &"idle"
-autoplay = "idle"
-frame_progress = 0.730328
-
-[node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(392, 144)
-script = ExtResource("1_0wwgy")
-speed = 50
-sword = ExtResource("3_o3v2t")
-
-[node name="İskelet" type="CollisionShape2D" parent="Player"]
-position = Vector2(-8, 0)
-shape = SubResource("RectangleShape2D_yiwyn")
-
-[node name="Görünüm" type="Sprite2D" parent="Player"]
-position = Vector2(-8, 0)
-texture = ExtResource("1_mg52j")
-hframes = 21
-frame = 1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
-libraries = {
-"": SubResource("AnimationLibrary_n1jd3")
-}
-autoplay = "idle"
-
-[node name="HitBox" type="Area2D" parent="Player"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/HitBox"]
-position = Vector2(-8.48, 0)
-scale = Vector2(1.12, 1.025)
-shape = SubResource("RectangleShape2D_aa6ah")
-
-[node name="dealAttackTimer" type="Timer" parent="Player"]
-wait_time = 0.4
-
-[node name="attackCooldown" type="Timer" parent="Player"]
-wait_time = 0.4
-
-[node name="HandPos" type="Marker2D" parent="Player"]
-position = Vector2(-8, 0)
-
-[node name="swordReloadTimer" type="Timer" parent="Player"]
-
-[connection signal="body_entered" from="Spike" to="Spike" method="_on_body_entered"]
-[connection signal="body_entered" from="Pot" to="Pot" method="_on_body_entered"]
-[connection signal="body_entered" from="Enemy/EnemyVisibleArea" to="Enemy" method="_on_enemy_visible_area_body_entered"]
-[connection signal="body_exited" from="Enemy/EnemyVisibleArea" to="Enemy" method="_on_enemy_visible_area_body_exited"]
-[connection signal="body_entered" from="SwordPickup" to="SwordPickup" method="_on_body_entered"]
-[connection signal="timeout" from="swordReloadTimer" to="." method="_on_sword_reload_timer_timeout"]
-[connection signal="timeout" from="swordReloadTimer" to="Player" method="_on_sword_reload_timer_timeout"]
 [connection signal="body_entered" from="Player/HitBox" to="Player" method="_on_hit_box_body_entered"]
 [connection signal="body_exited" from="Player/HitBox" to="Player" method="_on_hit_box_body_exited"]
 [connection signal="timeout" from="Player/dealAttackTimer" to="Player" method="_on_deal_attack_timer_timeout"]
 [connection signal="timeout" from="Player/attackCooldown" to="Player" method="_on_attack_cooldown_timeout"]
 [connection signal="timeout" from="Player/swordReloadTimer" to="Player" method="_on_sword_reload_timer_timeout"]
+[connection signal="body_entered" from="Spike" to="Spike" method="_on_body_entered"]
+[connection signal="body_entered" from="Pot" to="Pot" method="_on_body_entered"]
+[connection signal="body_entered" from="Enemy/EnemyVisibleArea" to="Enemy" method="_on_enemy_visible_area_body_entered"]
+[connection signal="body_exited" from="Enemy/EnemyVisibleArea" to="Enemy" method="_on_enemy_visible_area_body_exited"]
+[connection signal="body_entered" from="SwordPickup" to="SwordPickup" method="_on_body_entered"]

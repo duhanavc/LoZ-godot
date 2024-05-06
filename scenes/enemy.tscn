@@ -1,0 +1,159 @@
+[gd_scene load_steps=17 format=3 uid="uid://cney4nh2ec2w4"]
+
+[ext_resource type="Script" path="res://scripts/Enemy.gd" id="1_61c6i"]
+[ext_resource type="Texture2D" uid="uid://by0ihla7trx0o" path="res://sprites/enemy.png" id="2_86hv2"]
+[ext_resource type="AudioStream" uid="uid://dmle0xk58pyd8" path="res://fonts/minecraft-mob-villager-hit-2-gaming-sound-effect-minecraft-hd-sound-effects.mp3" id="3_5vr8s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvm25"]
+atlas = ExtResource("2_86hv2")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kyd7y"]
+atlas = ExtResource("2_86hv2")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nd3xu"]
+atlas = ExtResource("2_86hv2")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7os0o"]
+atlas = ExtResource("2_86hv2")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_87das"]
+atlas = ExtResource("2_86hv2")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_20g4d"]
+atlas = ExtResource("2_86hv2")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lih0a"]
+atlas = ExtResource("2_86hv2")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bcskt"]
+atlas = ExtResource("2_86hv2")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8j0vo"]
+atlas = ExtResource("2_86hv2")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i678v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uvm25")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kyd7y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nd3xu")
+}],
+"loop": true,
+"name": &"walkDown",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7os0o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_87das")
+}],
+"loop": true,
+"name": &"walkLeft",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_20g4d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lih0a")
+}],
+"loop": true,
+"name": &"walkRight",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bcskt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8j0vo")
+}],
+"loop": true,
+"name": &"walkUp",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kl3xm"]
+size = Vector2(10, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lflud"]
+size = Vector2(16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_va0v5"]
+radius = 32.0
+
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("nav", "rcArray")]
+position = Vector2(168, 120)
+script = ExtResource("1_61c6i")
+nav = NodePath("NavigationAgent2D")
+maxX = 320.0
+minX = -320.0
+maxY = 267.0
+minY = -267.0
+rcArray = [NodePath("RCDown"), NodePath("RCLeft"), NodePath("RCRight"), NodePath("RCUp")]
+metadata/_edit_group_ = true
+
+[node name="aniSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_i678v")
+animation = &"walkRight"
+frame_progress = 0.564246
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_postprocessing = 1
+debug_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_kl3xm")
+debug_color = Color(0.85098, 0.572549, 0.0431373, 0.419608)
+
+[node name="EnemyArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyArea"]
+shape = SubResource("RectangleShape2D_lflud")
+debug_color = Color(1, 0.0705882, 0, 0.419608)
+
+[node name="EnemyVisibleArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyVisibleArea"]
+shape = SubResource("CircleShape2D_va0v5")
+debug_color = Color(0.24848, 0.522053, 0.950193, 0.42)
+
+[node name="RCDown" type="RayCast2D" parent="."]
+target_position = Vector2(0, 24)
+
+[node name="RCLeft" type="RayCast2D" parent="."]
+target_position = Vector2(-24, 0)
+
+[node name="RCRight" type="RayCast2D" parent="."]
+target_position = Vector2(24, 0)
+
+[node name="RCUp" type="RayCast2D" parent="."]
+target_position = Vector2(0, -24)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_5vr8s")
+
+[connection signal="body_entered" from="EnemyVisibleArea" to="." method="_on_enemy_visible_area_body_entered"]
+[connection signal="body_exited" from="EnemyVisibleArea" to="." method="_on_enemy_visible_area_body_exited"]
